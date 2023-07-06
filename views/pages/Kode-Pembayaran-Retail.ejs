@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../../assets/images/shorcut.png" />
+
+  <title>Codashop - Pembayaran Retail</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+
+  <!-- Main CSS-->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <!-- Table CSS -->
+  <link rel="stylesheet" href="../../assets/css/table.css">
+
+  <!-- Tampilan Nav-Bar -->
+</head>
+
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"> Admin Page </a>
+    <div class="col text-end">
+      <a href="/auth/logout" class="btn btn-primary">Keluar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Tampilan Tabel Keterangan -->
+<main>
+  <div class="row">
+    <div class="col-md-5 col-lg-2 square">
+      <div class="info">
+        <div class="alert alert-info" role="alert">
+          <a href="Semua-pesanan" class="underline text-decoration-none"><b> Semua Pesanan </b></a>
+          <!-- <p><b> 16 </b></p> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-lg-2 square">
+      <div class="info">
+        <div class="alert alert-danger" role="alert">
+          <a href="Belum-Bayar" class="underline text-decoration-none"><b>Belum Dibayar</b></a>
+          <!-- <p><b> 4 </b></p> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-lg-2 square">
+      <div class="info">
+        <div class="alert alert-success" role="alert">
+          <a href="Sudah-Bayar" class="underline text-decoration-none"><b>Sudah
+              Dibayar</b></a>
+          <!-- <p><b> 4 </b></p> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-lg-2 square">
+      <div class="info">
+        <div class="alert alert-primary" role="alert">
+          <a href="Siap-Dikirim" class="underline text-decoration-none"><b>Siap Dikirim</b></a>
+          <!-- <p><b> 4 </b></p> -->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-5 col-lg-2 square">
+      <div class="info">
+        <div class="alert alert-success" role="alert">
+          <a href="Selesai" class="underline text-decoration-none"><b>Selesai</b></a>
+          <!-- <p><b> 4 </b></p> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-lg-2 square">
+      <div class="info">
+        <div class="alert alert-danger" role="alert">
+          <a href="Kode-Pembayaran-Retail" class="underline text-decoration-none-underline sp"><b> Kode Tagihan
+            </b></a>
+          <!-- <p><b> 4 </b></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- Tampilan Tabel Data -->
+<main>
+  <table class="content-table">
+    <form action="/sale/Kode-Pembayaran-Retail" method="post">
+      <thead>
+        <tr>
+          <th> Nomor Transaksi </th>
+          <th> Tanggal </th>
+          <th> Outlet </th>
+          <th> Nominal </th>
+          <th> Input Tagihan </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%retail.forEach(sale => {%>
+        <tr>
+          <td>
+            <input type="radio" class="btn btn-danger btn-sm" name="transaksi" value="<%= sale.no %>" required>
+            <a style="text-decoration: none;"><%= sale.no %> </a>
+          </td>
+          <td> <%= sale.date %> </td>
+          <td> <%= sale.payment %> </td>
+          <td> Rp<%= sale.price %> </td>
+          <td>
+            <div class="mb-3" style="margin-top: 10px; margin-bottom: -2px;">
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Input Kode Tagihan"
+                name="tagihan">
+            </div>
+          </td>
+          <td>
+            <input type="submit" class="btn btn-success btn-sm" name="konfirmasi" value="Kirim">
+          </td>
+          <%})%>
+      </tbody>
+    </form>
+  </table>
+
+  <!-- Sumber JS -->
+  <script src="../../assets/css/table.js"></script>
+  <script src="https://kit.fontawesome.com/695144269c.js" crossorigin="anonymous"></script>
